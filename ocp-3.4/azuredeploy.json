@@ -72,7 +72,7 @@
       }
   },
   "variables": {
-  "baseTemplateUrl": "https://raw.githubusercontent.com/lbroudoux/openshift-azure/rhel/",
+  "baseTemplateUrl": "https://raw.githubusercontent.com/jfenal/openshift-azure/ocp-3.4/",
     "baseVMachineTemplateUriInfranode": "[concat(variables('baseTemplateUrl'), 'infranode.json')]",
     "baseVMachineTemplateUriNode": "[concat(variables('baseTemplateUrl'), 'node.json')]",
     "baseVMachineTemplateUriMaster": "[concat(variables('baseTemplateUrl'), 'master.json')]",
