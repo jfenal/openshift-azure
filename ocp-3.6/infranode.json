@@ -167,7 +167,7 @@
         "typeHandlerVersion": "1.3",
         "settings": {
           "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'infranode.sh')]" ],
-          "commandToExecute": "[concat('sh infranode.sh ', parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
+            "commandToExecute": "[concat('sh infranode.sh \"', parameters('rhnUser'), '\" \"', parameters('rhnPass'), '\" \"', parameters('rhnPool','\"' ) ) ]"
         }
       }
     },

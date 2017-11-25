@@ -12,10 +12,22 @@ rhn_username="$6"
 rhn_pass="$7"
 rhn_pool="$8"
 
+echo "USERNAME:     $USERNAME"
+echo "PASSWORD:     $PASSWORD"
+echo "HOSTNAME:     $HOSTNAME"
+echo "NODECOUNT:    $NODECOUNT"
+echo "ROUTEREXTIP:  $ROUTEREXTIP"
+echo "rhn_username: $rhn_username"
+echo "rhn_pass:     $rhn_pass"
+echo "rhn_pool:     $rhn_pool"
 
+echo "Registration"
 subscription-manager register --username="${rhn_username}" --password="${rhn_pass}" --force
+
+echo "Pool attach"
 subscription-manager attach --pool="${rhn_pool}"
 
+echo ""
 subscription-manager repos --disable="*"
 subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.6-rpms" --enable="rhel-7-fast-datapath-rpms"
 
