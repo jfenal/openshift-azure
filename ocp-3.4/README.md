@@ -1,8 +1,8 @@
 This work is based on https://github.com/WilliamRedHat
 
-# RedHat Openshift 3.4 cluster on Azure
+# Red Hat Openshift 3.4 cluster on Azure
 
-When creating the RedHat Openshift 3.4 cluster on Azure, you will need a SSH RSA key for access.
+When creating the Red Hat Openshift 3.4 cluster on Azure, you will need a SSH RSA key for access.
 Do not forget to update rhn-username, pools, etc ...
 
 ## Create the cluster
@@ -18,10 +18,10 @@ follow 2 steps.
 
 Click on Deploy to Azure then you will be redirected to your Azure account
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Flbroudoux%2Fopenshift-azure%2Frhel%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjfenal%2Fopenshift-azure%2Focp-3.4%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Flbroudoux%2Fopenshift-azure%2Frhel%2Fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fjfenal%2Fopenshift-azure%2Focp-3.4%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
@@ -30,7 +30,7 @@ Wait for the installation to be ready this will consist of having one infra node
 #### From powershell CLI
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name <DeploymentName> -ResourceGroupName <RessourceGroupName> -TemplateUri https://raw.githubusercontent.com/lbroudoux/openshift-azure/rhel/azuredeploy.json
+New-AzureRmResourceGroupDeployment -Name <DeploymentName> -ResourceGroupName <RessourceGroupName> -TemplateUri https://raw.githubusercontent.com/jfenal/openshift-azure/rhel/azuredeploy.json
 ```
 
 #### Common parameters

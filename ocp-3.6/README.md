@@ -1,8 +1,8 @@
 This work is based on https://github.com/WilliamRedHat
 
-# RedHat Openshift 3.6 cluster on Azure
+# Red Hat Openshift 3.6 cluster on Azure
 
-When creating the RedHat Openshift 3.6 cluster on Azure, you will need a SSH RSA key for access.
+When creating the Red Hat Openshift 3.6 cluster on Azure, you will need a SSH RSA key for access.
 Do not forget to update rhn-username, pools, etc ...
 
 ## Create the cluster
