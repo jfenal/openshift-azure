@@ -1,9 +1,11 @@
 #!/bin/bash
 # Last Modified : 2016-05-26
 
-rhn_username=$1
-rhn_pass=$2
-rhn_pool=$3
+exec > /tmp/node.sh.log 2>&1
+
+rhn_username="$1"
+rhn_pass="$2"
+rhn_pool="$3"
 
 
 subscription-manager register --username="${rhn_username}" --password="${rhn_pass}" --force
