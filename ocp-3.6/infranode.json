@@ -49,7 +49,8 @@
       "metadata": {
         "description": "imageReference object that should be used to create the virtual machine"
       }
-    }
+    }-          "commandToExecute": "[concat('sh infranode.sh ', parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
+
   },
   "variables": {
     "apiVersion": "2015-06-15",
@@ -167,7 +168,7 @@
         "typeHandlerVersion": "1.3",
         "settings": {
           "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'infranode.sh')]" ],
-            "commandToExecute": "[concat('sh infranode.sh \"', parameters('rhnUser'), '\" \"', parameters('rhnPass'), '\" \"', parameters('rhnPool','\"' ) ) ]"
+          "commandToExecute": "[concat('sh infranode.sh ', parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
         }
       }
     },
