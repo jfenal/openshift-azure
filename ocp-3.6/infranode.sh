@@ -22,8 +22,8 @@ sed -i -e 's/sslverify=1/sslverify=0/' /etc/yum.repos.d/rhui-load-balancers
 mkdir -p /etc/dnsmasq.d
 azure_domain=$(awk '/^search/ {print $2}' < /etc/resolv.conf)
 if [ "$azure_domain" != "" ] ; then
-    echo "expand-hosts" > /etc/azure-vnet.conf
-    echo "domain=$azure_domain" > /etc/azure-vnet.conf
+    echo "expand-hosts" > /etc/dnsmasq.d/azure-vnet.conf
+    echo "domain=$azure_domain" > /etc/dnsmasq.d/azure-vnet.conf
 fi
 
 yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
