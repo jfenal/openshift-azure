@@ -23,7 +23,7 @@ mkdir -p /etc/dnsmasq.d
 azure_domain=$(awk '/^search/ {print $2}' < /etc/resolv.conf)
 if [ "$azure_domain" != "" ] ; then
     echo "expand-hosts" > /etc/dnsmasq.d/azure-vnet.conf
-    echo "domain=$azure_domain" > /etc/dnsmasq.d/azure-vnet.conf
+    echo "domain=$azure_domain" >> /etc/dnsmasq.d/azure-vnet.conf
 fi
 
 
@@ -49,6 +49,7 @@ systemctl enable rpcbind
 systemctl start rpcbind
 setsebool -P virt_sandbox_use_nfs 1
 setsebool -P virt_use_nfs 1
+setsebool -P openshift_use_nfs 1
 
 systemctl stop firewalld
 systemctl disable firewalld

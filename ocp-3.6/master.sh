@@ -40,8 +40,25 @@ mkdir -p /etc/dnsmasq.d
 azure_domain=$(awk '/^search/ {print $2}' < /etc/resolv.conf)
 if [ "$azure_domain" != "" ] ; then
     echo "expand-hosts" > /etc/dnsmasq.d/azure-vnet.conf
-    echo "domain=$azure_domain" > /etc/dnsmasq.d/azure-vnet.conf
+    echo "domain=$azure_domain" >> /etc/dnsmasq.d/azure-vnet.conf
 fi
+
+# create resolv.conf fix playbook
+cat << EOF > /home/${USERNAME}/fix-resolv.conf.yml
+---
+- hosts: all
+
+  tasks:
+  - name: ensure local azure domaine is present
+    lineinfile:
+      path: /etc/resolv.conf
+      regexp: '^search'
+      line: 'search ${azure_domain} cluster.local'
+
+EOF
+
+ansible-playbook fix-resolv.conf.yml
+
 
 
 yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct screen
@@ -68,6 +85,7 @@ systemctl enable rpcbind
 systemctl start rpcbind
 setsebool -P virt_sandbox_use_nfs 1
 setsebool -P virt_use_nfs 1
+setsebool -P openshift_use_nfs 1
 
 cat <<EOF > /etc/ansible/hosts
 [OSEv3:children]
@@ -179,11 +197,17 @@ node[01:${NODECOUNT}] openshift_node_labels="{'region': 'primary', 'zone': 'defa
 
 EOF
 
-cat <<EOF > /home/${USERNAME}/openshift-install.sh
+cat << EOF > /home/${USERNAME}/openshift-install.sh
 export ANSIBLE_HOST_KEY_CHECKING=False
+
+ansible-playbook fix-resolv.conf.yml
+
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
 oc annotate namespace default openshift.io/node-selector='region=infra' --overwrite
 oadm policy add-cluster-role-to-user cluster-admin admin
+
+ansible-playbook fix-resolv.conf.yml
+
 EOF
 
 cat <<EOF > /home/${USERNAME}/openshift-uninstall.sh

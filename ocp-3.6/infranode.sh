@@ -23,7 +23,7 @@ mkdir -p /etc/dnsmasq.d
 azure_domain=$(awk '/^search/ {print $2}' < /etc/resolv.conf)
 if [ "$azure_domain" != "" ] ; then
     echo "expand-hosts" > /etc/dnsmasq.d/azure-vnet.conf
-    echo "domain=$azure_domain" > /etc/dnsmasq.d/azure-vnet.conf
+    echo "domain=$azure_domain" >> /etc/dnsmasq.d/azure-vnet.conf
 fi
 
 yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
@@ -83,7 +83,7 @@ while [ $n -le 20 ]
   (( n++ ))
 done
 
-cat <<EOF > /etc/exports.d/openshif-ansible.exports
+cat <<EOF > /etc/exports.d/openshift-ansible.exports
 /exports/registry *(rw,root_squash)
 /exports/metrics *(rw,root_squash)
 /exports/logging-es *(rw,root_squash)
@@ -109,6 +109,8 @@ cat <<EOF > /etc/exports.d/openshif-ansible.exports
 /exports/pv0020 *(rw,root_squash)
 EOF
 
-# Exports everything and force refresh of iptables
+# Exports everything and disable iptables
 exportfs -r
-iptables -F
+
+systemctl stop iptables
+systemctl disable iptables
