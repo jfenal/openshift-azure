@@ -1,0 +1,33 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "jfenal"
+    },
+    "adminPassword": {
+      "value": "changeme"
+    },
+    "sshKeyData": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC5k/hShCDJ3pwj7b0zGrkcsooUXkckXETg8emXZJE4B4diAn9oG7Xw3dIt8LvRZQz5HLifMHPXwtiC4lTYqf1HQddQPNZ8XWp89JrXN4yWW0I+Ke4At1mqRxUyrBAeTG7hzbnk1FAG1nlspRZ6kZPrOFThT6S2i21Md4Rx7Fcln2toX29An0JV6gshLrCao2XQg6n7vXDtwvaHaCqK8kQwaId1mPQTVWxNxJihbXS6NzRg9EET3Aksy3XWfVpZ3xgjZ1gFDNlA/L3RqHzy6quZJ/ny+lXoU8KKuR7abtBAj+YKIb7RGpcXGYDZH1d7AlM1b1qotCrgjU37OwQ9rEaWKRhqKTXpp9i3Zx8SC0pDPRNbZFtW55t7wEfGCmbux3RqpUu0Lzivu2YW/hrJv/8hwu3ee/7klMwxyJPiEKyn+QRz9LTnUiKXN/iAb0rKcxC/ljS8QaUWsUA8iWuzeSD5z/qyfWx5R/kz1s9rXb4H0/1W5Rhehyr6Q7wlzWgfoXgGkqs9paTTgNs7GmUaKrjM52mu2PLNtdmcWYYMFuTfLRz7pc3JaJruRi2LoZzW2UU38kFfIT75Spk6d/UyThvzZSQ+0ipN39C88QoPD22iRZIRQV7+0ipozFdw2X+ZNVadMGUtVIFtjIaWs2PGfw5DNzZcBdFtyzoFfej5/tn50w== jfenal@jfenal.usersys.redhat.com"
+    },
+    "masterDnsName": {
+      "value": "ocp"
+    },
+    "numberOfNodes": {
+      "value": 3
+    },
+    "image": {
+      "value": "rhel"
+    },
+    "rhnUser": {
+      "value": "changeme"
+    },
+    "rhnPass": {
+      "value": "changeme"
+    },
+    "rhnPool": {
+      "value": "8a85f9843affb61f013b52c86ce856d2"
+    }
+  }
+}
