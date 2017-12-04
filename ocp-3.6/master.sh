@@ -57,10 +57,6 @@ cat << EOF > /home/${USERNAME}/fix-resolv.conf.yml
 
 EOF
 
-ansible-playbook fix-resolv.conf.yml
-
-
-
 yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct screen
 yum -y update
 yum -y install atomic-openshift-utils
